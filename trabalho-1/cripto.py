@@ -1,7 +1,5 @@
 import random, os, secrets
 
-BLOCK_SIZE = 16
-
 def _xor_bytes(b1, b2):
     return bytes(a ^ b for a, b in zip(b1, b2))
 
@@ -11,6 +9,7 @@ def GEN(seed: list[int]) -> list[int]:
     return [random.randint(0, 1) for _ in range(key_len)]
 
 def ENC(K: list[int], M: list[int]) -> list[int]:
+    BLOCK_SIZE = len(K)
     # using CBC to encrypt
     IV = [secrets.randbelow(256) for _ in range(BLOCK_SIZE)]
     C = []
@@ -26,6 +25,7 @@ def ENC(K: list[int], M: list[int]) -> list[int]:
     return IV + C
 
 def DEC(K: list[int], C: list[int]) -> list[int]:
+    BLOCK_SIZE = len(K)
     IV = C[:BLOCK_SIZE]
     C = C[BLOCK_SIZE:]
     M = []
