@@ -18,7 +18,7 @@ def test():
         m = DEC(k, c)
         assert msg_base == m
     fim = time.perf_counter()
-    print(f"1. TEMPO DE EXECUÇÃO (1000 ciclos): {fim - init:.5f} segundos")
+    print(f"1. TEMPO DE EXECUÇÃO (3000 ciclos): {fim - init:.5f} segundos")
 
     visited_ciphers = set()
     collisions = 0
