@@ -9,13 +9,14 @@ def calc_hamming_distance(l1, l2):
 
 def test():
     seed_base = [1, 0, 1, 1, 0, 0, 1, 1]
-    msg_base = [0, 1] * 16
+    msg_base = [1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
     
     init = time.perf_counter()
-    for _ in range(1000):
+    for _ in range(3000):
         k = GEN(seed_base)
         c = ENC(k, msg_base)
         m = DEC(k, c)
+        assert msg_base == m
     fim = time.perf_counter()
     print(f"1. TEMPO DE EXECUÇÃO (1000 ciclos): {fim - init:.5f} segundos")
 
